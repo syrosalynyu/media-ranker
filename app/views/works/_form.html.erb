@@ -1,0 +1,37 @@
+<% if @work.errors.any? %>
+    <ul>
+      <% @work.errors.each do |column, message| %>
+        <li><%= column.capitalize %> <%= message %></li>
+      <% end %>  
+    </ul>
+  <% end %>
+
+
+  <%= form_with model: @work do |f| %>
+    <div class="form-group col-md-4">
+      <%= f.label :category %>
+      <%= f.select :category, ["album", "book", "movie"], class: "form-control"%>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= f.label :creator %>
+      <%= f.text_field :creator, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= f.label :year %>
+      <%= f.text_field :year, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+
+    <%= f.submit "#{action_name} Work", class: "btn btn-primary ml-3" %>
+  <% end %>

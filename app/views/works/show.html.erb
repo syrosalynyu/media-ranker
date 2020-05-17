@@ -1,0 +1,21 @@
+<section class="container mt-3">
+
+  <section>
+    <h2><%= @work.title %></h2>
+    <ul>
+      <li>Created by: <%= @work.creator %></li>
+      <li>Published: <%= @work.year %></li>
+      <li><%= @work.description %></li>
+    </ul> 
+  </section>
+
+  <section>
+    <%= link_to "Edit", edit_work_path,class:"btn btn-info m-3 custom" %>
+    <%= link_to "Delete", work_path(@work.id) ,method: :delete, data: { confirm: "Are you sure?"},class:"btn btn-info m-3 custom" %>
+    <%# TODO: Upvote button %>
+  </section>
+
+  <%# TODO: List of voters %>
+
+</section>
+
