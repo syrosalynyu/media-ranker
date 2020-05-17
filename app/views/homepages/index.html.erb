@@ -1,0 +1,64 @@
+<section class="container mt-3">
+  <h2>Media Spotlight: <% work = @works.sample%> <%= "#{work.title} by #{work.creator}"%></h2>
+
+
+
+  <div class="row">
+    <section class="col">
+    <h3>Top Albums</h3>
+      <% if @albums.size == 0 %>
+        <h5>No Albums</h5>
+      <% elsif @albums.size > 10 %>
+        <% @albums.sample(10).each do |album| %>
+          <div class="row">
+            <%= link_to album.title, work_path(album.id) %><%= "by #{album.creator}" %>
+          </div>
+        <% end %>
+      <% else %>
+        <% @albums.each do |album| %>
+          <div class="row">
+            <%= link_to album.title, work_path(album.id) %><%= "by #{album.creator}" %>
+          </div>
+        <% end %>
+      <% end %>
+    </section>
+
+    <section class="col">
+    <h3>Top Books</h3>
+      <% if @books.size == 0 %>
+        <h5>No Books</h5>
+      <% elsif @books.size > 10 %>
+        <% @books.sample(10).each do |book| %>
+          <div class="row">
+            <%= link_to book.title, work_path(book.id) %><%= "by #{book.creator}" %>
+          </div>
+        <% end %>
+      <% else %>
+        <% @books.each do |book| %>
+          <div class="row">
+            <%= link_to book.title, work_path(book.id) %><%= "by #{book.creator}" %>
+          </div>
+        <% end %>
+      <% end %>
+    </section>
+
+    <section class="col">
+    <h3>Top Movies</h3>
+      <% if @movies.size == 0 %>
+        <h5>No Movies</h5>
+      <% elsif @movies.size > 10 %>
+        <%= @movies.sample(10).each do |movie| %>
+          <div class="row">
+            <%= link_to movie.title, work_path(movie.id) %><%= "by #{movie.creator}" %>
+          </div>
+        <% end %>
+      <% else %>
+        <% @movies.each do |movie| %>
+          <div class="row">
+            <%= link_to movie.title, work_path(movie.id) %><%= "by #{movie.creator}" %>
+          </div>
+        <% end %>
+      <% end %>
+    </section>
+  </div>
+</section>
