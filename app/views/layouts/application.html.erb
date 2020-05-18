@@ -27,10 +27,35 @@
       <li class="nav-item">
         <%# link_to "View all users", users_path, class:"navbar-brand" %>
       </li>
+      <% if session[:user_id] %>
+      <li class="nav-item">
+        <%= link_to "Logged in as #{session[:user_id]}", current_user_path, class:"navbar-brand" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Logout", logout_path, method: :post,class:"navbar-brand" %>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <%= link_to "Login", login_path, class:"navbar-brand" %>
+      </li>
+      <% end %>
     </ul>
   </nav>
 
   <body>
+  <section class="flash-msg">
+    <% flash.each do |name, message| %>
+      <% if name != "error" %>
+        <strong class="<%= name %> alert alert-success" role="alert">
+          <%= message %>
+        </strong>
+      <% else %>
+        <strong class="<%= name %> alert alert-warning" role="alert">
+        <%= message %>
+        </strong>
+      <% end %>
+    <% end %>
+  </section>
     <%= yield %>
   </body>
 </html>
