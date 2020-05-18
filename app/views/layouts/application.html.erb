@@ -43,6 +43,19 @@
   </nav>
 
   <body>
+  <section class="flash-msg">
+    <% flash.each do |name, message| %>
+      <% if name != "error" %>
+        <strong class="<%= name %> alert alert-success" role="alert">
+          <%= message %>
+        </strong>
+      <% else %>
+        <strong class="<%= name %> alert alert-warning" role="alert">
+        <%= message %>
+        </strong>
+      <% end %>
+    <% end %>
+  </section>
     <%= yield %>
   </body>
 </html>

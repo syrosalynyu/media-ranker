@@ -9,17 +9,17 @@ class UsersController < ApplicationController
     if @user.nil?
       @user = User.new(username: params[:user][:username], joined: Date.today)
       if !@user.save
-        flash[:error] = "Unable to login."
-        redirect_to root_path
+        render :login_form
       else
         flash[:welcome] = "Welcome #{@user.username}"
+        redirect_to root_path
       end
     else
       flash[:welcome] = "Welcome back #{@user.username}"
+      redirect_to root_path
     end
 
     session[:user_id] = @user.id
-    redirect_to root_path
   end
 
   def logout
