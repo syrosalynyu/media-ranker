@@ -1,6 +1,6 @@
 <section class="container mt-3">
-  <h2>Media Spotlight: <% work = @works.sample%> <%= "#{work.title} by #{work.creator}"%></h2>
-
+  <h2>Media Spotlight: <% work = Work.highest_vote %> <%= "#{work[0].title} by #{work[0].creator}"%></h2>
+  <h6><%= work[1]%> votes - <%= work[0].description %></h6>
 
 
   <div class="row">

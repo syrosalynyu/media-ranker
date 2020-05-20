@@ -11,11 +11,17 @@
 
   <section>
     <%= link_to "Edit", edit_work_path,class:"btn btn-info m-3 custom" %>
-    <%= link_to "Delete", work_path(@work.id) ,method: :delete, data: { confirm: "Are you sure?"},class:"btn btn-info m-3 custom" %>
-    <%# TODO: Upvote button %>
+    <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?" },class:"btn btn-info m-3 custom" %>
+    <%= link_to "Upvote", upvote_path, method: :post, class:"btn btn-info m-3 custom" %>
   </section>
-
-  <%# TODO: List of voters %>
-
+  
+  <section>
+    <h4><%= @work.votes.size %> Votes for this <%= @work.category.capitalize %></h4>
+    <% @work.users.each do |user| %>
+      <ul>
+        <li><%= user.username %> <%=  user.votes.find_by(work: @work).created_at %></li>
+      </ul>
+    <% end %>
+  </section>
 </section>
 

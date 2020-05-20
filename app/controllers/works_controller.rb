@@ -64,6 +64,24 @@ class WorksController < ApplicationController
     end
   end
 
+  def upvote
+    @work = Work.find_by(id: params[:id])
+    if session[:user_id]
+      # the user had voted to this work before
+      if @work.users.find_by(id: session[:user_id])
+        flash[:error] = "Sorry, you've voted before."
+      # the user never votes to this work  
+      else 
+        @user = User.find_by(id: session[:user_id])
+        @vote = @user.votes.create(work_id: @work.id)
+        flash[:notice] = "Thanks for voting."
+      end
+    else
+      flash[:error] = "You must log in in order to vote."
+    end
+    redirect_to work_path
+  end
+
   private
 
   def work_params
