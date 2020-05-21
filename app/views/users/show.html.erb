@@ -1,6 +1,6 @@
-<section class="container mt-3">
+
   <h2>User Summary: <%= @user.username %></h2>
-  <h5>Joined site <%= @user.created_at.strftime("%Y-%m-%d") %></h5>
+  <p>Joined site <%= @user.created_at.strftime("%Y-%m-%d") %></p>
 
 
   <%= link_to "See all Users", users_path,class:"btn btn-info m-3 custom" %>
@@ -26,4 +26,4 @@
       </tr>
   <% end %>
   </table>
-</section>
+

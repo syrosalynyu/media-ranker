@@ -9,53 +9,57 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <nav class="navbar navbar-light bg-light">
-    <%= link_to "Media Ranker", homepages_path, class:"navbar-brand" %>
-  </nav>
+  <header class="jumbotron text-center pb-2">
+    <h1><%= link_to "Media Ranker", homepages_path %> | Ranking the Best of Everything</h1>
 
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <%= link_to "View top media", homepages_path, class:"navbar-brand" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "View all media", works_path, class:"navbar-brand" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Add a new work", new_work_path, class:"navbar-brand" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "View all users", users_path, class:"navbar-brand" %>
-      </li>
-      <% if session[:user_id] %>
-      <li class="nav-item">
-        <%= link_to "Logged in as #{session[:user_id]}", current_user_path, class:"navbar-brand" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Logout", logout_path, method: :post,class:"navbar-brand" %>
-      </li>
-      <% else %>
-      <li class="nav-item">
-        <%= link_to "Login", login_path, class:"navbar-brand" %>
-      </li>
-      <% end %>
-    </ul>
-  </nav>
-
+    <nav class="container mt-3">
+      <ul class="nav">
+        <li class="nav-item">
+          <%= link_to "View top media", homepages_path, class:"navbar-brand" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "View all media", works_path, class:"navbar-brand" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Add a new work", new_work_path, class:"navbar-brand" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "View all users", users_path, class:"navbar-brand" %>
+        </li>
+        <% if session[:user_id] %>
+          <li class="nav-item">
+            <%= link_to "Logged in as #{session[:user_id]}", current_user_path, class:"navbar-brand" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Logout", logout_path, method: :post,class:"navbar-brand" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", login_path, class:"navbar-brand" %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+  
   <body>
-  <section class="flash-msg m-3">
-    <% flash.each do |name, message| %>
-      <% if name != "error" %>
-        <strong class="<%= name %> alert alert-success" role="alert">
+    <section class="flash-msg m-3">
+      <% flash.each do |name, message| %>
+        <% if name != "error" %>
+          <strong class="<%= name %> alert alert-success" role="alert">
+            <%= message %>
+          </strong>
+        <% else %>
+          <strong class="<%= name %> alert alert-warning" role="alert">
           <%= message %>
-        </strong>
-      <% else %>
-        <strong class="<%= name %> alert alert-warning" role="alert">
-        <%= message %>
-        </strong>
+          </strong>
+        <% end %>
       <% end %>
-    <% end %>
-  </section>
-    <%= yield %>
+    </section>
+
+    <section class="container mt-3">
+      <%= yield %>
+    </section>  
   </body>
+
 </html>
