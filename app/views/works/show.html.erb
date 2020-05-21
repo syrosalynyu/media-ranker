@@ -1,27 +1,27 @@
-<section class="container mt-3">
-  
-  <section>
-    <h2><%= @work.title %></h2>
-    <ul>
-      <li>Created by: <%= @work.creator %></li>
-      <li>Published: <%= @work.year %></li>
-      <li><%= @work.description %></li>
-    </ul> 
-  </section>
-
-  <section>
-    <%= link_to "Edit", edit_work_path,class:"btn btn-info m-3 custom" %>
-    <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?" },class:"btn btn-info m-3 custom" %>
-    <%= link_to "Upvote", upvote_path, method: :post, class:"btn btn-info m-3 custom" %>
-  </section>
-  
-  <section>
-    <h4><%= @work.votes.size %> Votes for this <%= @work.category.capitalize %></h4>
-    <% @work.users.each do |user| %>
-      <ul>
-        <li><%= user.username %> <%=  user.votes.find_by(work: @work).created_at %></li>
-      </ul>
-    <% end %>
-  </section>
+<section>
+  <h2><%= @work.title %></h2>
+  <p>Created by: <%= @work.creator %></p>
+  <p>Published: <%= @work.year %></p>
+  <p><%= @work.description %></p>
 </section>
 
+<section>
+  <%= link_to "Edit", edit_work_path,class:"btn btn-info m-3 custom" %>
+  <%= link_to "Upvote", upvote_path, method: :post, class:"btn btn-info m-3 custom" %>
+  <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?" },class:"btn btn-info m-3 custom" %>
+</section>
+
+
+<h4><%= @work.votes.size %> Votes for this <%= @work.category.capitalize %></h4>
+<table class="table">
+  <tr>
+    <th scope="col">User</th>
+    <th scope="col">Date</th>
+  </tr>
+  <% @work.users.each do |user| %>
+    <tr>
+      <td scope="row"><%= user.username %></th>
+      <td><%=  user.votes.find_by(work: @work).created_at.strftime("%Y-%m-%d") %></th>
+    </tr>
+  <% end %>
+</table>
