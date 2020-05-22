@@ -1,0 +1,85 @@
+bluebreaker:
+  id: 1 
+  category: album
+  title: Blue Breaker
+  creator: Dr. Sarai Langosh
+  description: Et et expedita non aut quo.
+  year: 1949
+krebfull:
+  id: 2
+  category: album
+  title: Kreb-Full-o Been
+  creator: Ms. Trevion Buckridge
+  description: Vero consectetur delectus consequatur id aut accusantium unde excepturi.
+  year: 2016
+wakeuppie:
+  id: 3
+  category: album
+  title: Wake-up Pie
+  creator: Timmy Streich I
+  description: Voluptatem consequatur qui consectetur nisi officiis culpa.
+  year: 1919
+majorcup:
+  id: 4
+  category: album
+  title: Major Cup
+  creator: Jayde Bartoletti
+  description: Quis recusandae cum est facere consequatur minima magni et.
+  year: 1944
+holidaychoice:
+  id: 5
+  category: album
+  title: Holiday Choice
+  creator: Alexandria Lehner
+  description: Excepturi voluptas ut voluptatum.
+  year: 1940
+wintermug:
+  id: 6
+  category: album
+  title: Winter Mug
+  creator: Tia Weissnat II
+  description: Laboriosam autem iusto quae sed voluptate et.
+  year: 1990
+majorequinox:
+  id: 7
+  category: album
+  title: Major Equinox
+  creator: Queen Satterfield
+  description: Fugit perferendis est quam sunt porro vel rerum.
+  year: 1997
+goodbyeutopia:
+  id: 8
+  category: album
+  title: Goodbye Utopia
+  creator: Orion Spencer
+  description: Praesentium enim pariatur voluptatem sed quod dolorum.
+  year: 1962
+greenselect:
+  id: 9
+  category: album
+  title: Green Select
+  creator: Berneice Jenkins
+  description: Hic repudiandae molestiae id nulla aliquid maiores necessitatibus.
+  year: 1957
+expressextract:
+  id: 10
+  category: album
+  title: Express Extract
+  creator: Dorothy Jast I
+  description: Dolores dolorum aut ea aperiam et voluptatem.
+  year: 1969
+winterbeen:
+  id: 11
+  category: album
+  title: Winter Been
+  creator: Mackenzie Wilkinson
+  description: Culpa repudiandae et at sint et amet fugiat et. 
+  year: 1932
+joetreat:
+  id: 12
+  category: book
+  title: Joe Treat
+  creator: Blaise Lesch
+  description: Voluptatem adipisci qui velit.
+  year: 1968
+
