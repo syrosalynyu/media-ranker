@@ -1,6 +1,10 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.all
+    @works = { 
+      albums: Work.work_by_votes('album', 10), 
+      books: Work.work_by_votes('book', 10), 
+      movies: Work.work_by_votes('movie', 10),
+    }
   end
 
   def new
