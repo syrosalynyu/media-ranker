@@ -6,9 +6,10 @@
 </section>
 
 <section>
-  <%= link_to "Edit", edit_work_path,class:"btn btn-info m-3 custom" %>
-  <%= link_to "Upvote", upvote_path, method: :post, class:"btn btn-info m-3 custom" %>
-  <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?" },class:"btn btn-info m-3 custom" %>
+  <%= link_to "Back to media ranks", root_path,class:"btn btn-info mb-3" %>
+  <%= link_to "Edit", edit_work_path,class:"btn btn-info mb-3" %>
+  <%= link_to "Upvote", upvote_path, method: :post, class:"btn btn-info mb-3" %>
+  <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?" },class:"btn btn-danger mb-3" %>
 </section>
 
 
@@ -16,11 +17,11 @@
 <table class="table">
   <tr>
     <th scope="col">User</th>
-    <th scope="col">Date</th>
+    <th scope="col">Voted on</th>
   </tr>
   <% @work.users.each do |user| %>
     <tr>
-      <td scope="row"><%= user.username %></th>
+      <td scope="row"><%= link_to user.username, user_path(user.id) %></th>
       <td><%=  user.votes.find_by(work: @work).created_at.strftime("%Y-%m-%d") %></th>
     </tr>
   <% end %>

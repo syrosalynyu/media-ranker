@@ -9,11 +9,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header class="jumbotron text-center pb-2">
+  <header class="jumbotron">
     <h1><%= link_to "Media Ranker", homepages_path %> | Ranking the Best of Everything</h1>
 
-    <nav class="container mt-3">
-      <ul class="nav">
+    <nav>
+      <ul class="nav justify-content-center">
         <li class="nav-item">
           <%= link_to "View top media", homepages_path, class:"navbar-brand" %>
         </li>
@@ -28,14 +28,14 @@
         </li>
         <% if session[:user_id] %>
           <li class="nav-item">
-            <%= link_to "Logged in as #{@current_user.username}", current_user_path, class:"navbar-brand" %>
+            <%= link_to "Logged in as #{@current_user.username}", user_path(id: session[:user_id]), class:"btn btn-outline-info mr-1" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Logout", logout_path, method: :post,class:"navbar-brand" %>
+            <%= link_to "Logout", logout_path, method: :post, class:"btn btn-outline-info mr-1" %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", login_path, class:"navbar-brand" %>
+            <%= link_to "Login", login_path, class:"btn btn-outline-info mr-1 align" %>
           </li>
         <% end %>
       </ul>
@@ -57,7 +57,7 @@
       <% end %>
     </section>
 
-    <section class="container mt-3">
+    <section class="container-fluid p-3">
       <%= yield %>
     </section>  
   </body>

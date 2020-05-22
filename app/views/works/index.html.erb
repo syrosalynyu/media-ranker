@@ -1,7 +1,8 @@
 <h2>List of Works</h2>
 
-<%= Work.work_by_votes("album") %>
-  <h3>Albums</h3>
+<section>
+<% @works.each do |category, collections|%>
+  <h3><%= category.capitalize %></h3>
   <table class="table">
     <tr>
       <th scope="col">Votes</th>
@@ -9,60 +10,24 @@
       <th scope="col">Title</th>
       <th scope="col">Created By</th>
       <th scope="col">Publish</th>
+      <th scope="col">Upvote</th>
     </tr>
-    <% @works.each do |work| %>
-      <% if work.category == 'album'%>
-        <tr>
-          <td scope="row"><%= work.votes.size %></th>
-          <td><%= work.category %></th>
-          <td><%= link_to work.title, work_path(work.id) %></th>
-          <td><%= work.creator %></th>
-          <td><%= work.year %></th>
-        </tr>
-      <% end %>
-    <% end %>
-  </table>
-
-  <h3>Books</h3>
-  <table class="table">
+  <% if @works[category].length == 0 %>
     <tr>
-      <th scope="col">Votes</th>
-      <th scope="col">Category</th>
-      <th scope="col">Title</th>
-      <th scope="col">Created By</th>
-      <th scope="col">Publish</th>
+      <td><%= "No #{category.capitalize}" %></td>
     </tr>
-    <% @works.each do |work| %>
-      <% if work.category == 'book'%>
-        <tr>
-          <td scope="row"><%= work.votes.size %></th>
-          <td><%= work.category %></th>
-          <td><%= link_to work.title, work_path(work.id) %></th>
-          <td><%= work.creator %></th>
-          <td><%= work.year %></th>
-        </tr>
-      <% end %>
+  <% else %>
+    <% @works[category].each do |work| %>
+      <tr>
+        <td scope="row"><%= work.votes.count %></td>
+        <td><%= work.category %></td>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.year %></td>
+        <td><%= link_to "Upvote", upvote_path(work.id), method: :post, class:"btn btn-info custom" %></td>
+      </tr>
     <% end %>
+  <% end %>
   </table>
-
-  <h3>Movies</h3>
-  <table class="table">
-    <tr>
-      <th scope="col">Votes</th>
-      <th scope="col">Category</th>
-      <th scope="col">Title</th>
-      <th scope="col">Created By</th>
-      <th scope="col">Publish</th>
-    </tr>
-    <% @works.each do |work| %>
-      <% if work.category == 'movie'%>
-        <tr>
-          <td scope="row"><%= work.votes.size %></th>
-          <td><%= work.category %></th>
-          <td><%= link_to work.title, work_path(work.id) %></th>
-          <td><%= work.creator %></th>
-          <td><%= work.year %></th>
-        </tr>
-      <% end %>
-    <% end %>
-  </table>
+<% end %>
+</section>

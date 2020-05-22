@@ -1,6 +1,10 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.all
+    @works = { 
+      albums: Work.work_by_votes('album', 10), 
+      books: Work.work_by_votes('book', 10), 
+      movies: Work.work_by_votes('movie', 10),
+    }
   end
 
   def new
@@ -79,7 +83,8 @@ class WorksController < ApplicationController
     else
       flash[:error] = "You must log in in order to vote."
     end
-    redirect_to work_path
+    # Redirects the browser to the page that issued the request, which is the current page.
+    redirect_back fallback_location: works_path
   end
 
   private

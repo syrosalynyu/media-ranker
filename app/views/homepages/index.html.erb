@@ -1,18 +1,25 @@
-<section class="container m-4">
-  <h2 class="text-center">Media Spotlight: <%= "#{@spotlight[0].title} by #{@spotlight[0].creator}"%></h2>
+<section class="p-3 m-3">
+  <h2 class="text-center">Media Spotlight: <%= link_to @spotlight[0].title, work_path(@spotlight[0].id) %> 
+  by <%= @spotlight[0].creator %></h2>
   <h6 class="text-center"><%= @spotlight[1]%> votes - <%= @spotlight[0].description %></h6>
 </section>
 
-<div class="row">
+<div class="row p-2">
   <% @works.each do |category, collections|%>
     <section class="col">
       <h3>Top <%= category.capitalize %></h3>
       <% if @works[category].length == 0 %>
-        <h5>No <%= category.capitalize %></h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">No <%= category.capitalize %></li>
+        </ul>
       <% else %>
         <ul class="list-group list-group-flush">
           <% @works[category].each do |work| %>
-              <li class="list-group-item"><%= link_to work.title, work_path(work.id) %> by <%= work.creator %></li>
+            <li class="list-group-item">
+            <%= link_to work.title, work_path(work.id) %> 
+            <h6>by <%= work.creator %></h6>
+            <p><%= work.votes.count %> votes</p>
+            </li>
           <% end %>
         </ul>
       <% end %>

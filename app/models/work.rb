@@ -5,7 +5,7 @@ class Work < ApplicationRecord
   # Answer from my tutor Jordan: use scope
   validates :title, presence: true, uniqueness: { case_sensitive: false, scope: :category }
 
-  has_many :votes
+  has_many :votes, dependent: :destroy 
   has_many :users, through: :votes
 
   def self.highest_vote
