@@ -1,29 +1,28 @@
+<h2>User Summary: <%= @user.username %></h2>
+<p>Joined site <%= @user.created_at.strftime("%Y-%m-%d") %></p>
 
-  <h2>User Summary: <%= @user.username %></h2>
-  <p>Joined site <%= @user.created_at.strftime("%Y-%m-%d") %></p>
 
+<%= link_to "See all Users", users_path,class:"btn btn-info m-3 custom" %>
+<%= link_to "Back to Media List", works_path,class:"btn btn-info m-3 custom" %>
 
-  <%= link_to "See all Users", users_path,class:"btn btn-info m-3 custom" %>
-  <%= link_to "Back to Media List", works_path,class:"btn btn-info m-3 custom" %>
+<h3>Votes</h3>
 
-  <h3>Votes</h3>
-
-  <table class="table">
+<table class="table">
+  <tr>
+    <th scope="col">Media Title</th>
+    <th scope="col">Created By</th>
+    <th scope="col">Published</th>
+    <th scope="col">Category</th>
+    <th scope="col">Voted On</th>
+  </tr>
+  <% @user.votes.each do |vote| %>
     <tr>
-      <th scope="col">Media Title</th>
-      <th scope="col">Created By</th>
-      <th scope="col">Published</th>
-      <th scope="col">Category</th>
-      <th scope="col">Voted On</th>
+      <td scope="row"> <%= link_to vote.work.title, work_path(vote.work_id) %></td>
+      <td> <%= vote.work.creator %></td>
+      <td> <%= vote.work.year %></td>
+      <td> <%= vote.work.category %></td>
+      <td> <%= vote.created_at.strftime("%Y-%m-%d") %></td>
     </tr>
-    <% @user.votes.each do |vote| %>
-      <tr>
-        <td scope="row"> <%= link_to vote.work.title, work_path(vote.work_id) %></td>
-        <td> <%= vote.work.creator %></td>
-        <td> <%= vote.work.year %></td>
-        <td> <%= vote.work.category %></td>
-        <td> <%= vote.created_at.strftime("%Y-%m-%d") %></td>
-      </tr>
-  <% end %>
-  </table>
+<% end %>
+</table>
 
