@@ -9,11 +9,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header class="jumbotron text-center pb-2">
+  <header class="jumbotron">
     <h1><%= link_to "Media Ranker", homepages_path %> | Ranking the Best of Everything</h1>
 
-    <nav class="container p-3 mt-3">
-      <ul class="nav nav-pills justify-content-center">
+    <nav>
+      <ul class="nav justify-content-center">
         <li class="nav-item">
           <%= link_to "View top media", homepages_path, class:"navbar-brand" %>
         </li>
@@ -35,7 +35,7 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", login_path, class:"btn btn-outline-info mr-1" %>
+            <%= link_to "Login", login_path, class:"btn btn-outline-info mr-1 align" %>
           </li>
         <% end %>
       </ul>
@@ -57,7 +57,7 @@
       <% end %>
     </section>
 
-    <section class="container pt-3">
+    <section class="container-fluid p-3">
       <%= yield %>
     </section>  
   </body>
